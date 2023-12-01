@@ -12,7 +12,7 @@ type Env = {
 const app = new Hono<{ Bindings: Env }>();
 
 app.post('/', async (c) => {
-	const dom = await fetch('https://www.technopat.net/sosyal/bolum/indirim-koesesi.257/?prefix_id=30');
+	const dom = await fetch('https://www.technopat.net/sosyal/bolum/indirim-koesesi.257/?order=post_date&direction=desc&prefix_id[0]=30');
 	const $ = cheerio.load(await dom.text());
 	const posts = $('.js-threadList').children('div');
 	const titles = posts.find('a[data-tp-primary="on"]');
